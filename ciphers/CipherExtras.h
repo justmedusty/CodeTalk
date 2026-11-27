@@ -1,0 +1,8 @@
+//
+// Created by dustyn on 11/27/26.
+//
+
+#ifndef CODETALK_CIPHEREXTRAS_H
+#define CODETALK_CIPHEREXTRAS_H
+
+#endif //CODETALK_CIPHEREXTRAS_H

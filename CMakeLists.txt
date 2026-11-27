@@ -8,4 +8,10 @@ add_executable(CodeTalk main.cpp
         cli/CommandLineTools.cpp
         cli/CommandLineTools.h
         CodeTalk.h
-        ciphers/CipherKey.h)
+        ciphers/CipherKey.h
+        parsing/CipherFileParser.cpp
+        parsing/CipherFileParser.h
+        ciphers/Caesar.h
+        ciphers/CipherExtras.cpp
+        ciphers/CipherExtras.h
+)

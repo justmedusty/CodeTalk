@@ -29,14 +29,15 @@ public:
     virtual std::string encrypt(std::string plaintext) = 0;
     virtual std::string decrypt(std::string ciphertext) = 0;
 
-    Cipher(const std::string &pathToCipherFile) {
+    Cipher(const std::string &pathToCipherFile) : key() {
         if (!std::filesystem::exists(pathToCipherFile)) {
             std::cerr << "FATAL: The path to the cipher file (" << pathToCipherFile << ") does not exist." << std::endl;
             exit(EXIT_CODES::FILE_NOT_FOUND);
         }
 
         this->cipherFile = pathToCipherFile;
-    };
+    }
+
     static int32_t getCharacterPosition(const char *character) {
         if (!CHARACTER_MAP.contains(character)) {
             return RETURN_CODES::NOT_FOUND;
