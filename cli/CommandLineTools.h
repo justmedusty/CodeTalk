@@ -17,7 +17,6 @@ enum MessageLevel {
 
 
 void emitMessage(MessageLevel level, const std::string &message);
-
 void printHelp();
 
 
