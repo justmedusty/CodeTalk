@@ -6,6 +6,7 @@
 #define CODETALK_CODETALK_H
 
 //Program centric definitions
+#define DEFAULT_COLUMN_WIDTH 7
 
 enum CipherType {
     UNKNOWN,
@@ -26,9 +27,11 @@ enum CipherExtras {
     EVERY_FIFTH,
     EVERY_SIXTH,
     EVERY_SEVENTH,
-    REVERSE_TRANSPOSITION,
-    COLUMNAR_TRANSPOSITION //requires key in cipher file
+    REVERSE_TRANSPOSITION,// (7,6,5,4,3,2,1)
+    ZIGZAG_TRANSPOSITION, // (2,5,1,6,3,7,4)
+    COLUMNAR_TRANSPOSITION //requires key in cipher file, can be of any length the others are stuck at DEFAULT_COLUMN_WIDTH
 };
+
 
 enum EXIT_CODES {
     OK = 0,

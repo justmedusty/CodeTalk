@@ -3,7 +3,10 @@ project(CodeTalk)
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(CodeTalk main.cpp
+find_package(Boost REQUIRED COMPONENTS unit_test_framework)
+
+
+add_library(CodeTalkCore
         ciphers/Cipher.h
         cli/CommandLineTools.cpp
         cli/CommandLineTools.h
@@ -14,4 +17,17 @@ add_executable(CodeTalk main.cpp
         ciphers/Caesar.h
         ciphers/CipherExtras.cpp
         ciphers/CipherExtras.h
+        test/CipherTest.cpp
 )
+
+add_executable(CodeTalk main.cpp
+)
+
+add_executable(CodeTalkCipherTest
+        test/CipherTest.cpp)
+
+target_link_libraries(CodeTalkCipherTest PRIVATE
+        CodeTalkCore
+        Boost::unit_test_framework)
+
+target_link_libraries(CodeTalk PRIVATE CodeTalkCore)
