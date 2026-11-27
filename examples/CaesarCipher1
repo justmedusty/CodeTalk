@@ -1,0 +1,7 @@
+CAESAR
+10
+EVERY_OTHER
+
+#Name of cipher first
+#Key, for basic caesar it's just a constant shift so one key
+#Optional Cipher Extra, this means that only every 2nd character is valid and the rest are inserted random characters by this program, valid options are EVERY_OTHER,EVERY_THIRD...EVERY_SEVENTH

@@ -1,0 +1,5 @@
+ONE_TIME_PAD
+11-5-14-28-31-8-15-27-21-11-15
+
+ #one time pad messages CANNOT be longer than the pad. Pad values in this case are 1-35 (0 and 36 are the same character so they are excluded)
+ #values are separated by hyphens and no zero prefixes before numbers

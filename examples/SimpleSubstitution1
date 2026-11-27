@@ -1,0 +1,7 @@
+SIMPLE_SUBSTITUTION
+"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"->"ABCDEFGHIJKLM0123456789NOPQRSTUVWXYZ"
+EVERY_THIRD
+
+#Uses simple substitution cipher
+#Copy paste the character map from Cipher.h encapsulated in quotes, and then type ->"NEWMAP" , the new map MUST contain the exact same characters just in another order.
+#EVERY_THIRD is optional and signifies we onl want every 3rd character, the rest will be filled with random junk
