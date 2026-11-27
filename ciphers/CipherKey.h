@@ -11,10 +11,10 @@
 
 class CipherKey {
 public:
-     CipherType cipherType;
-     std::vector<uint8_t> key;
-     CipherExtras extras = NONE; // default is none
-
+    CipherType cipherType;
+    std::vector<uint8_t> key;
+    CipherExtras extras = NONE; // default is none
+    std::vector<uint8_t> transposition_order; // only if using some form of transposition
 private:
 };
 #endif //CODETALK_CIPHERKEY_H

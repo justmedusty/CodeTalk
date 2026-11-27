@@ -26,6 +26,8 @@ enum CipherExtras {
     EVERY_FIFTH,
     EVERY_SIXTH,
     EVERY_SEVENTH,
+    REVERSE_TRANSPOSITION,
+    COLUMNAR_TRANSPOSITION //requires key in cipher file
 };
 
 enum EXIT_CODES {

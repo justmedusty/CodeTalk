@@ -1,0 +1,21 @@
+CIPHER_START
+SIMPLE_SUBSTITUTION
+"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"->"ABCDEFGHIJKLM0123456789NOPQRSTUVWXYZ"
+EVERY_OTHER
+CIPHER_END
+
+CIPHER_START
+CAESAR
+10
+COLUMNAR_TRANSPOSITION(5:4,1,3,2,5)
+CIPHER_END
+
+CIPHER_START
+SIMPLE_SUBSTITUTION
+"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"->"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+EVERY_THIRD
+CIPHER_END
+
+#This is an example of a stacked cipher, it REQUIRES marking CIPHER_START and CIPHER_END so that the parser will easily know this is a multi
+#cipher key file, it will go in chronological order for encrypt and backwards for decrypt. The Columnar transposition REQUIRES an order, the syntax will be as above, the within
+#brackets the first number being the number of entries in each 'column', and the second is the order we want for each column to be mixed up
