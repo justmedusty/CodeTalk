@@ -5,7 +5,6 @@
 #include "CipherExtras.h"
 
 #include <string>
-
 #include "../CodeTalk.h"
 
 void applyNullCipher(CipherExtras cipherType, std::string &text) {
@@ -71,11 +70,20 @@ void removeNullCipher(CipherExtras cipherType, std::string &text) {
         }
     }
 
-    std::string decoded_text = std::string(text.length() / nullFactor, 0);
+    auto decoded_text = std::string(text.length() / nullFactor, 0);
     uint64_t counter = 0;
-    for (int i = nullFactor; i < text.length(); i += nullFactor) {
+    for (uint64_t i = nullFactor; i < text.length(); i += nullFactor) {
         decoded_text[counter++] = text[i];
     }
 
     text = std::move(decoded_text);
 }
+
+void applyTransposition(CipherExtras cipherType, std::string &text,std::optional<std::vector<uint8_t>&> transposition_key) {
+
+}
+
+void undoTransposition(CipherExtras cipherType, std::string &text,std::optional<std::vector<uint8_t>&> transposition_key) {
+
+}
+
