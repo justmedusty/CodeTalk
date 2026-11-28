@@ -155,7 +155,6 @@ void undoTransposition(CipherExtras cipherType, std::string &text,
         if (cipherType == CipherExtras::COLUMNAR_TRANSPOSITION) {
 
             for (uint64_t j = 0; j < column_width; j++) {
-
                 untransposed_text[i + transposition_key.value()[j]] = text[i + j];
             }
 

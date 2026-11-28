@@ -11,6 +11,7 @@
 #include "../ciphers/OneTimePad.h"
 
 
+
 Cipher *Parser::parseCipherType(std::string line) {
 
     if (line == CAESAR_STRING) {

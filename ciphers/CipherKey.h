@@ -9,6 +9,9 @@
 
 #include "../CodeTalk.h"
 
+/*
+ * This should probably be an abstract class but for now this will stay
+ */
 class CipherKey {
 public:
     CipherKey();
@@ -16,9 +19,10 @@ public:
     ~CipherKey() = default;
 
     CipherType cipherType;
-    std::vector<uint8_t> key_material;
+    std::optional<std::vector<uint8_t>> key_material;
+    std::optional<std::string>  substitution_key;
     CipherExtras extras = NONE; // default is none
-    std::vector<uint8_t> transposition_order; // only if using columnar transposition
+    std::optional<std::vector<uint8_t>> transposition_order; // only if using columnar transposition
 private:
 };
 #endif //CODETALK_CIPHERKEY_H

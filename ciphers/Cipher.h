@@ -24,19 +24,17 @@ inline auto CHARACTER_MAP_LENGTH = CHARACTER_MAP.length();
 class Cipher {
 public:
 
-    Cipher() = default;
-    virtual ~Cipher() = default;
-    virtual std::string encrypt(std::string plaintext) = 0;
-    virtual std::string decrypt(std::string ciphertext) = 0;
-
-    Cipher(const std::string &pathToCipherFile) : key() {
-        if (!std::filesystem::exists(pathToCipherFile)) {
-            std::cerr << "FATAL: The path to the cipher file (" << pathToCipherFile << ") does not exist." << std::endl;
-            exit(EXIT_CODES::FILE_NOT_FOUND);
-        }
-
-        this->cipherFile = pathToCipherFile;
+    Cipher() {
+        this->type = CipherType::UNKNOWN;
+        this->key = CipherKey();
     }
+    virtual ~Cipher() = default;
+    virtual std::string encrypt(std::string& plaintext) = 0;
+    virtual std::string decrypt(std::string& ciphertext) = 0;
+    /*
+     * Since keys for different ciphers will look totally different, we need to have a generic parse function for the key
+     */
+    virtual void parseKey(std::string& key) = 0;
 
     static int32_t getCharacterPosition(const char *character) {
         if (!CHARACTER_MAP.contains(character)) {
@@ -64,8 +62,7 @@ public:
 protected:
     CipherKey key;
     CipherType type = CipherType::UNKNOWN;
-    std::vector<char> inBuffer;
-    std::vector<char> outBuffer;
-    std::filesystem::path cipherFile;
+    std::string inBuffer;
+    std::string outBuffer;
 };
 #endif //CODETALK_CIPHER_H

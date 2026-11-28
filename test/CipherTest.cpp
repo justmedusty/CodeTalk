@@ -7,12 +7,13 @@
 
 #include "../ciphers/Caesar.h"
 #include "../ciphers/Cipher.h"
+#include "../parsing/CipherFileParser.h"
 
 BOOST_AUTO_TEST_CASE(test_caesar_cipher) {
     std::string test_string = "Hello";
 
-    CaesarCipher cipher {
-        "/tmp/testcipher1"
-    };
+    CaesarCipher cipher {};
+
+    Parser parser {"../examples/CaesarCipher1"};
 
 }

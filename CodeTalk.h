@@ -39,6 +39,7 @@ enum EXIT_CODES {
     CIPHER_INVALID,
     EXPRESSION_INVALID,
     KEY_INVALID,
+    INVALID_CHARACTERS_FOUND,
     // add more as needed
 };
 
