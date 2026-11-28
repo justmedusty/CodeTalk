@@ -17,7 +17,6 @@ add_library(CodeTalkCore
         ciphers/Caesar.h
         ciphers/CipherExtras.cpp
         ciphers/CipherExtras.h
-        test/CipherTest.cpp
 )
 
 add_executable(CodeTalk main.cpp
@@ -31,3 +30,5 @@ target_link_libraries(CodeTalkCipherTest PRIVATE
         Boost::unit_test_framework)
 
 target_link_libraries(CodeTalk PRIVATE CodeTalkCore)
+
+add_test(CodeTalkCipherTest, CipherTest)

@@ -14,7 +14,7 @@ public:
     CipherType cipherType;
     std::vector<uint8_t> key_material;
     CipherExtras extras = NONE; // default is none
-    std::vector<uint8_t> transposition_order; // only if using some form of transposition
+    std::vector<uint8_t> transposition_order; // only if using columnar transposition
 private:
 };
 #endif //CODETALK_CIPHERKEY_H
