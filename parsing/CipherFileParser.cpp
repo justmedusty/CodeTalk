@@ -6,7 +6,40 @@
 #include <format>
 #include <fstream>
 
-std::vector<uint8_t> parseColumnarTranspositionKey(std::string line) {
+#include "../ciphers/Caesar.h"
+#include "../ciphers/SimpleSubsitution.h"
+#include "../ciphers/OneTimePad.h"
+
+
+Cipher *Parser::parseCipherType(std::string line) {
+
+    if (line == CAESAR_STRING) {
+        return new CaesarCipher();
+    }
+
+    if (line == SIMPLE_SUBSTITUTION_STRING) {
+        return new SimpleSubstitutionCipher();
+    }
+
+    if (line == ONE_TIME_PAD_STRING) {
+        return new OneTimePadCipher();
+    }
+
+    //add more as they are implemented
+
+    emitMessage(FATAL, std::format("parseCipherType: Unknown CipherType {}", line));
+    exit(EXIT_CODES::CIPHER_INVALID);
+}
+
+CipherKey Parser::parseCipherKey(std::string line,uint64_t cipherNum) {
+
+}
+
+CipherExtras Parser::parseCipherExtras(std::string line) {
+
+}
+
+std::vector<uint8_t> Parser::parseColumnarTranspositionKey(std::string line) {
 }
 
 uint64_t Parser::getNumEntries() {
@@ -44,6 +77,9 @@ uint64_t Parser::getNumEntries() {
     return cipherCount;
 }
 
+
+
+
 std::unique_ptr<Cipher> Parser::parseEntry(uint64_t cipherNum) {
     std::ifstream entryFile(this->cipherFile);
 
@@ -54,11 +90,10 @@ std::unique_ptr<Cipher> Parser::parseEntry(uint64_t cipherNum) {
 
     std::string line;
     bool in_cipher = false;
-    bool in_cipher_definition = false;
+    bool in_cipher_definition = true; //first thing expected so true to begin with
     bool in_key = false;
     bool in_cipher_extras = false;
     uint64_t cipherCount = 0;
-
 
     while (std::getline(entryFile, line)) {
 
@@ -67,10 +102,12 @@ std::unique_ptr<Cipher> Parser::parseEntry(uint64_t cipherNum) {
             continue;
         }
 
+
         if (this->stacked_ciphers) {
 
             if (line.starts_with(MULTI_START_STRING)) {
                 in_cipher = true;
+                in_cipher_definition = true;
                 continue;
             }
 

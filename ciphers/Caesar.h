@@ -8,16 +8,14 @@
 
 class CaesarCipher : public Cipher {
 public:
-    explicit CaesarCipher(const std::string &pathToCipherFile)
-        : Cipher(pathToCipherFile) {
-    }
+
 
     std::string encrypt(std::string plaintext) override {
         uint32_t shift = this->key.key_material[0];
         auto result = std::string(plaintext.length(), 0);
 
         for (uint32_t i = 0; i < plaintext.length(); i++) {
-            result[i] = CHARACTER_MAP[getCharacterPosition(&plaintext[i]) + shift];
+            result[i] = CHARACTER_MAP[(getCharacterPosition(&plaintext[i]) + shift) % CHARACTER_MAP_LENGTH];
         }
 
         return result;
@@ -29,7 +27,7 @@ public:
 
 
         for (uint32_t i = 0; i < ciphertext.length(); i++) {
-            result[i] = CHARACTER_MAP[getCharacterPosition(&ciphertext[i]) - shift];
+            result[i] = CHARACTER_MAP[getCharacterPosition((&ciphertext[i]) + (CHARACTER_MAP_LENGTH - shift)) % CHARACTER_MAP_LENGTH];
         }
 
         return result;

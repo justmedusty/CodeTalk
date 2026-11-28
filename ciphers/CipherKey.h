@@ -11,6 +11,10 @@
 
 class CipherKey {
 public:
+    CipherKey();
+
+    ~CipherKey() = default;
+
     CipherType cipherType;
     std::vector<uint8_t> key_material;
     CipherExtras extras = NONE; // default is none

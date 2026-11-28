@@ -24,7 +24,7 @@ inline auto CHARACTER_MAP_LENGTH = CHARACTER_MAP.length();
 class Cipher {
 public:
 
-
+    Cipher() = default;
     virtual ~Cipher() = default;
     virtual std::string encrypt(std::string plaintext) = 0;
     virtual std::string decrypt(std::string ciphertext) = 0;

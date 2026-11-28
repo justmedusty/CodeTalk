@@ -17,6 +17,8 @@ add_library(CodeTalkCore
         ciphers/Caesar.h
         ciphers/CipherExtras.cpp
         ciphers/CipherExtras.h
+        ciphers/SimpleSubsitution.h
+        ciphers/OneTimePad.h
 )
 
 add_executable(CodeTalk main.cpp

@@ -1,5 +1,7 @@
 CAESAR
+#Comments must be on their own line
 10
+#Like so
 EVERY_OTHER
 
 #Name of cipher first

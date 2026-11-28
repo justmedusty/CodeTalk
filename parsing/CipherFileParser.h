@@ -44,6 +44,10 @@ private:
 
     uint64_t getNumEntries();
     std::unique_ptr<Cipher> parseEntry(uint64_t cipherNum);
+    std::vector<uint8_t> parseColumnarTranspositionKey(std::string line);
+    Cipher *parseCipherType(std::string line);
+    CipherKey parseCipherKey(std::string line,uint64_t cipherNum);
+    CipherExtras parseCipherExtras(std::string line);
 
     // Stacked ciphers are a possibility so it should include a list/ vector
     std::vector<std::unique_ptr<Cipher> > ciphers;
